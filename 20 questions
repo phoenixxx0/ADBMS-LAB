@@ -1,0 +1,81 @@
+#1
+CREATE TYPE addr_ty AS OBJECT
+(street varchar2 (60),
+city varchar2 (30),
+state char (2),
+zip varchar(9));
+
+#2
+CREATE TYPE person_ty AS OBJECT 
+(name varchar2 (25), 
+address addr_ty);
+
+#3
+CREATE TYPE emp_ty AS OBJECT 
+(empt_id varchar2 (9), 
+person person_ty);
+
+#4
+CREATE TABLE EMP_OO 
+(full_emp emp_ty);
+
+#5
+INSERT INTO emp_oo VALUES 
+(emp_ty ('100',
+person_ty('Ram', 
+addr_ty ('1000 TU', 'Patiala', 'PB', '147001'))));
+
+
+#6
+desc emp_oo;
+
+#7
+select * from emp_oo;
+select e.full_emp.emp_id ID,
+e.full_emp.person.name NAME,
+e.full_emp.person.address.city CITY,
+From emp_oo e;
+
+#8
+update emp_oo e set
+e.full_emp.person.name = 'Raj'
+where e.full_emp.empt_id = '100';
+
+#9
+create or replace type newemp_ty as object (
+firstname Varchar2(25),
+lastname Varchar2(25),
+birthdate Date,
+member function AGE (BirthDate in Date) return Number)
+
+#10
+create or replace type body newemp_ty as 
+	member function AGE (BirthDate in Date) return Number is 
+	begin 
+		return Round(SysDate-BirthDate);
+	end;
+end;
+
+#11
+select ref(p) from dept_table p;
+
+#12
+create type new_dept_oo as object
+(deptno number(3),
+dname varchar(10));
+
+#13
+create table emp_test_fk(
+empno number(3),
+name varchar(10),
+dept ref new_dept_oo);
+
+#14
+desc emp_test_fk
+set desc depth 2
+
+desc emp_test_fk
+
+#15
+insert into emp_test_fk
+select 100,'raj',ref(p) from dept_table p where depno = 10;
