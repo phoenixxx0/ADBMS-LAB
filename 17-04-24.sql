@@ -3,7 +3,7 @@ import mysql.connector
 # Connecting to the server
 conn = mysql.connector.connect(user='root',
                                host='localhost',
-                               passwd='Sridhar@79',
+                               passwd='root',
                                database='dbmslab0304',
                                auth_plugin='mysql_native_password')
 
@@ -26,7 +26,7 @@ import mysql.connector
 # Connecting to the server
 conn = mysql.connector.connect(user='root',
                                host='localhost',
-                               passwd='Sridhar@79',
+                               passwd='root',
                                database='dbmslab0304',
                                auth_plugin='mysql_native_password')
 
